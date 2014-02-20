@@ -1,16 +1,13 @@
 use strict;
-while (my $i = <>)
-{
-#определяем имя ящика
+my %fff;
+while (my $i = <>) {
 my $i1=$i;
 $i1=~/\uFrom\s+(.*?)\s+/;
-	if (defined $1)
+my $der = $1;
+	if (defined $der)
 		{
-		#Открываем файл на добавление, если нет, создаем новый
-		 open(FFF,">> $1.mailbox");
+		 open($fff{$der},">> $der.mailbox");
+		 select $fff{$der};
 		}
-#определяем рабочую информацию
-$i=~/\uFrom\s+(.*?)\uFrom\s+/;
-print (FFF "$i");
+print $i;
 }
-close (FFF);
